@@ -1,0 +1,6 @@
+framework module Pods_REALM_TEST {
+  umbrella header "Pods-REALM_TEST-umbrella.h"
+
+  export *
+  module * { export * }
+}
