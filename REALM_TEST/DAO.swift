@@ -29,19 +29,27 @@ class DAO {
     
     internal func savePerson(person:Person){
         // Query and update from any thread
-        dispatch_async(dispatch_queue_create("background", nil)) {
+        if  var p = loadPersonWithId(person.id) {
+            //Updating the object
             try! self.realm.write {
-                self.realm.add(person)
+                //Every property needs to be updated one by one (can't update like p = person unfortunately)
+                p.city = person.city
+                p.firstname = person.firstname
+                p.lastname = person.lastname
             }
+            return
+        }
+        //Creating the object
+        try! self.realm.write {
+            self.realm.add(person)
         }
     }
     
-    internal func loadPersonWithId(id:Int) -> Person{
-        var p = Person()
+    internal func loadPersonWithId(id:Int) -> Person?{
         if let p =  realm.objects(Person.self).filter("id == \(id)").first{
             return p
         }
-        return p
+        return nil
     }
     
 }

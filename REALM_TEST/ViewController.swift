@@ -16,13 +16,16 @@ class ViewController: UIViewController {
         //TEST
         let p = Person()
         p.firstname = "Ben"
-        p.lastname = "Lacroix"
+        p.lastname = "Lacroixxxxx"
         p.city = "Hyeres"
         
         DAO().savePerson(p)
         
-        let person = DAO().loadPersonWithId(12)
-        print(person.lastname)
+        let persons = DAO().getPersons()
+        print(persons.count)
+        if let person = DAO().loadPersonWithId(12){
+            print(person.lastname)
+        }
         //END TEST
     }
 
