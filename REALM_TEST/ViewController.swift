@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         
         //TEST
         let p = Person()
+        p.id = 2
         p.firstname = "Ben"
         p.lastname = "Lacroixxxxx"
         p.city = "Hyeres"

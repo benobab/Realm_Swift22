@@ -28,8 +28,8 @@ class DAO {
     }
     
     internal func savePerson(person:Person){
-        // Query and update from any thread
-        if  var p = loadPersonWithId(person.id) {
+        // If the person exists in database, the object is updated rather than created
+        if  let p = loadPersonWithId(person.id) {
             //Updating the object
             try! self.realm.write {
                 //Every property needs to be updated one by one (can't update like p = person unfortunately)
