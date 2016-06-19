@@ -17,7 +17,7 @@ var persons:Array<Person> = Array<Person>()
 for i in 1...10 {
     let p = Person()
     p.id = i
-    p.firstname = "Man - \(i)"
+    p.firstname = "Manoooo - \(i)"
     p.lastname = "Yeah - \(i)"
     p.city = "City - \(i)"
     persons.append(p)
@@ -33,7 +33,26 @@ for p in persons {
 Realm.Configuration.defaultConfiguration.fileURL
 
 //Retrieve them
-DAO().loadPersonWithId(3)
-realm.objects(Person.self)[2]
+DAO().loadPersonWithId(3)?.firstname
+realm.objects(Person.self)[1].firstname
 
 //Update one
+if let p = DAO().loadPersonWithId(4) {
+    try! realm.write {
+        p.firstname = "Pinuts"
+    }
+}
+
+//Object successfully updated
+DAO().loadPersonWithId(4)?.firstname
+
+//Delete an object
+if let p = DAO().loadPersonWithId(2) {
+    try! realm.write {
+        realm.delete(p)
+    }
+}
+//Object successfully deleted
+DAO().getPersons().count
+
+
