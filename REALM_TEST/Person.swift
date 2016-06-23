@@ -14,6 +14,7 @@ class Person:Object {
     dynamic var firstname:String = ""
     dynamic var lastname:String = ""
     dynamic var city:String = ""
+    dynamic var newProperty:String = ""
     
     
     override class func primaryKey() -> String? {
